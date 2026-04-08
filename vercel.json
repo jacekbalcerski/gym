@@ -1,6 +1,5 @@
 {
   "buildCommand": "ng build --configuration production",
-  "devCommand": "ng serve --port $PORT",
   "outputDirectory": "dist/gym-monitor/browser",
   "framework": null,
   "crons": [
