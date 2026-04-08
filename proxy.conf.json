@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://gym-eight-blush.vercel.app",
+    "secure": true,
+    "changeOrigin": true
+  }
+}
