@@ -36,6 +36,19 @@ interface GymSchedule {
   parseConfidence: 'high' | 'medium' | 'low';
 }
 
+const SITE_UNAVAILABLE_PHRASES = [
+  'serwis jest niedostępny',
+  'prace serwisowe',
+  'strona jest niedostępna',
+  'temporarily unavailable',
+];
+
+function isSiteUnavailable(html: string, statusCode: number): boolean {
+  if (statusCode !== 200) return true;
+  const lower = html.toLowerCase();
+  return SITE_UNAVAILABLE_PHRASES.some(phrase => lower.includes(phrase));
+}
+
 async function callGemini(pageText: string): Promise<GymSchedule> {
   const apiKey = process.env.GEMINI_API_KEY;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
@@ -102,7 +115,6 @@ ${pageText}
   const data = await response.json();
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
 
-  // Oczyść ewentualne markdown backticki
   const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
   return JSON.parse(cleaned);
 }
@@ -113,18 +125,37 @@ const kv = new Redis({
 });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Opcjonalna weryfikacja CRON_SECRET
   if (process.env.CRON_SECRET && req.headers['authorization'] !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
   try {
     // 1. Fetch HTML
-    const html = await fetch(
+    const httpResponse = await fetch(
       'https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60'
-    ).then(r => r.text());
+    );
+    const html = await httpResponse.text();
 
-    // 2. Wyciągnij tekst z głównej sekcji
+    // 2. Sprawdź czy strona działa
+    if (isSiteUnavailable(html, httpResponse.status)) {
+      // Zachowaj stare dane, tylko zaktualizuj flagi
+      const currentState = await kv.get('schedule:current') as object | null;
+      await kv.set('schedule:current', {
+        ...(currentState ?? {}),
+        siteUnavailable: true,
+        lastChecked: new Date().toISOString(),
+      });
+
+      await kv.set('schedule:raw-text', {
+        text: html.substring(0, 500),
+        fetchedAt: new Date().toISOString(),
+        siteUnavailable: true,
+      });
+
+      return res.status(200).json({ success: true, siteUnavailable: true });
+    }
+
+    // 3. Wyciągnij tekst z głównej sekcji
     const $ = cheerio.load(html);
     const contentText =
       $('main').text().trim() ||
@@ -132,49 +163,44 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       $('article').text().trim() ||
       $('body').text().trim();
 
-    // 3. Wyślij do Gemini
+    // 4. Wyślij do Gemini
     const geminiResponse = await callGemini(contentText);
 
-    // 4. Porównaj z aktualnym stanem
-    const currentState = await kv.get('schedule:current');
-    const hasChanged = JSON.stringify(currentState) !== JSON.stringify(geminiResponse);
+    // 5. Porównaj z aktualnym stanem (ignorując metadane)
+    const currentState = await kv.get('schedule:current') as Record<string, unknown> | null;
+    const { lastChecked: _lc, lastChanged: _lg, siteUnavailable: _su, ...currentData } = currentState ?? {};
+    const hasChanged = JSON.stringify(currentData) !== JSON.stringify(geminiResponse);
 
-    // 5. Zapisz
+    // 6. Zapisz
     if (hasChanged) {
-      // Archiwizuj stary stan
       if (currentState) {
         const history: unknown[] = (await kv.get('schedule:history')) || [];
-        (history as object[]).push({
-          state: currentState,
-          archivedAt: new Date().toISOString(),
-        });
-        // Zachowaj ostatnie 30 wpisów
+        (history as object[]).push({ state: currentState, archivedAt: new Date().toISOString() });
         await kv.set('schedule:history', history.slice(-30));
       }
 
       await kv.set('schedule:current', {
         ...geminiResponse,
+        siteUnavailable: false,
         lastChanged: new Date().toISOString(),
         lastChecked: new Date().toISOString(),
       });
     } else {
-      // Zaktualizuj tylko timestamp sprawdzenia
       await kv.set('schedule:current', {
-        ...(currentState as object),
+        ...currentState,
+        siteUnavailable: false,
         lastChecked: new Date().toISOString(),
       });
     }
 
-    // 6. Zapisz surowy tekst do debugowania
+    // 7. Zapisz surowy tekst do debugowania
     await kv.set('schedule:raw-text', {
       text: contentText.substring(0, 5000),
       fetchedAt: new Date().toISOString(),
+      siteUnavailable: false,
     });
 
-    return res.status(200).json({
-      success: true,
-      changed: hasChanged,
-    });
+    return res.status(200).json({ success: true, changed: hasChanged });
   } catch (error) {
     console.error('Scrape error:', error);
     return res.status(500).json({ error: 'Scrape failed' });

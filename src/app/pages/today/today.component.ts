@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScheduleService } from '../../services/schedule.service';
-import { GymSchedule, DayHours, Closure, ModifiedHours } from '../../models/schedule.model';
+import { GymSchedule, DayHours } from '../../models/schedule.model';
 
 interface DayStatus {
   date: Date;
@@ -19,10 +19,20 @@ interface DayStatus {
   template: `
     <div class="min-h-screen bg-gray-950 text-white p-4 max-w-md mx-auto">
 
+      <!-- Baner: strona OSiR niedostępna -->
+      @if (schedule()?.siteUnavailable) {
+        <div class="rounded-xl bg-orange-900 border border-orange-700 p-3 mb-4 flex items-center gap-3">
+          <span class="text-xl">⚠️</span>
+          <p class="text-orange-200 text-sm">
+            Strona OSiR jest niedostępna — wyświetlane dane mogą być nieaktualne.
+          </p>
+        </div>
+      }
+
       <!-- Status teraz -->
       <div class="rounded-2xl p-6 mb-6 text-center"
            [class.bg-green-900]="isOpenNow()"
-           [class.bg-red-900]="!isOpenNow()"
+           [class.bg-red-900]="!isOpenNow() && schedule() !== null"
            [class.bg-gray-800]="schedule() === null">
 
         @if (loading()) {
@@ -84,7 +94,7 @@ interface DayStatus {
       <!-- Uwagi / ostrzeżenia -->
       @if (showWarning()) {
         <div class="rounded-xl bg-yellow-900 border border-yellow-700 p-4 mb-4">
-          <h2 class="text-sm font-semibold text-yellow-300 uppercase tracking-wider mb-2">⚠ Uwagi</h2>
+          <h2 class="text-sm font-semibold text-yellow-300 uppercase tracking-wider mb-2">Uwagi</h2>
           @if (schedule()?.parseConfidence !== 'high') {
             <p class="text-yellow-200 text-sm mb-2">
               Pewność analizy: <strong>{{ schedule()?.parseConfidence }}</strong> — dane mogą być niedokładne.
@@ -98,9 +108,16 @@ interface DayStatus {
 
       <!-- Ostatnie sprawdzenie -->
       @if (schedule()?.lastChecked) {
-        <p class="text-center text-gray-600 text-xs mt-6">
-          Dane z: {{ formatDate(schedule()!.lastChecked) }}
-        </p>
+        <div class="text-center mt-6">
+          <p class="text-xs" [class]="dataFreshnessClass()">
+            Dane z: {{ formatDate(schedule()!.lastChecked) }}
+          </p>
+          @if (dataAgeHours() > 24) {
+            <p class="text-xs text-orange-400 mt-1">
+              Dane mają {{ dataAgeHours() }}h — mogą być nieaktualne
+            </p>
+          }
+        </div>
       }
     </div>
   `,
@@ -178,29 +195,41 @@ export class TodayComponent implements OnInit {
     return s.parseConfidence !== 'high' || (s.notices?.length ?? 0) > 0;
   });
 
+  dataAgeHours = computed<number>(() => {
+    const s = this.schedule();
+    if (!s?.lastChecked) return 0;
+    return Math.floor((Date.now() - new Date(s.lastChecked).getTime()) / 3_600_000);
+  });
+
+  dataFreshnessClass = computed<string>(() => {
+    const h = this.dataAgeHours();
+    if (h < 24) return 'text-green-700';
+    if (h < 48) return 'text-orange-500';
+    return 'text-red-500';
+  });
+
   private getDayStatus(schedule: GymSchedule, date: Date): DayStatus {
     const iso = this.toISODate(date);
     const dayNames = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
     const label = dayNames[date.getDay()];
 
-    // Sprawdź zamknięcia
-    const closure = schedule.closures.find(c => iso >= c.dateFrom && iso <= c.dateTo && !c.timeFrom);
+    const closure = schedule.closures?.find(c => iso >= c.dateFrom && iso <= c.dateTo && !c.timeFrom);
     if (closure) {
       return { date, label, isOpen: false, isClosed: true, hours: null, closureReason: closure.reason };
     }
 
-    // Sprawdź zmienione godziny
-    const modified = schedule.modifiedHours.find(m => iso >= m.dateFrom && iso <= m.dateTo);
+    const modified = schedule.modifiedHours?.find(m => iso >= m.dateFrom && iso <= m.dateTo);
     if (modified) {
       return { date, label, isOpen: true, isClosed: false, hours: { open: modified.open, close: modified.close }, closureReason: null };
     }
 
-    // Standardowe godziny
     const dow = date.getDay();
     let hours: DayHours | null = null;
-    if (dow === 0) hours = schedule.regularHours.sunday;
-    else if (dow === 6) hours = schedule.regularHours.saturday;
-    else hours = schedule.regularHours.weekdays;
+    if (schedule.regularHours) {
+      if (dow === 0) hours = schedule.regularHours.sunday;
+      else if (dow === 6) hours = schedule.regularHours.saturday;
+      else hours = schedule.regularHours.weekdays;
+    }
 
     return { date, label, isOpen: true, isClosed: false, hours, closureReason: null };
   }

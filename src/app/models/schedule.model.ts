@@ -8,6 +8,7 @@ export interface GymSchedule {
   modifiedHours: ModifiedHours[];
   notices: string[];
   parseConfidence: 'high' | 'medium' | 'low';
+  siteUnavailable: boolean;
   lastChecked: string;   // ISO datetime
   lastChanged: string;   // ISO datetime
 }
