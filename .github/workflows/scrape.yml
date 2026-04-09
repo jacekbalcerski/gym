@@ -1,0 +1,39 @@
+name: Scrape Gym Schedule
+
+on:
+  schedule:
+    # 7:00 Warsaw time (UTC+2 summer, UTC+1 winter) — runs at 5:00 UTC
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch gym page
+        id: fetch
+        run: |
+          HTTP_CODE=$(curl -s -o /tmp/gym.html -w "%{http_code}" \
+            'https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60' \
+            -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36' \
+            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+            -H 'Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8')
+          echo "http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
+          echo "Fetch status: $HTTP_CODE"
+
+      - name: Send to Vercel scraper
+        run: |
+          HTTP_CODE="${{ steps.fetch.outputs.http_code }}"
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "Page fetched OK — posting HTML to scraper"
+            curl -s -f -X POST \
+              '${{ vars.VERCEL_APP_URL }}/api/cron/scrape' \
+              -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}' \
+              -H 'Content-Type: application/json' \
+              -d "{\"html\": $(jq -Rs '.' /tmp/gym.html)}"
+          else
+            echo "Fetch failed ($HTTP_CODE) — calling scraper GET (will log site unavailable)"
+            curl -s -f \
+              '${{ vars.VERCEL_APP_URL }}/api/cron/scrape' \
+              -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}'
+          fi
