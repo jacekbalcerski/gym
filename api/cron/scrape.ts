@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Redis } from '@upstash/redis';
 import * as cheerio from 'cheerio';
+import { kvGet, kvSet } from '../kv.js';
 
 interface DayHours {
   open: string;
@@ -105,24 +105,15 @@ ${pageText}
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: {
-        temperature: 0.1,
-        maxOutputTokens: 2000,
-      },
+      generationConfig: { temperature: 0.1, maxOutputTokens: 2000 },
     }),
   });
 
-  const data = await response.json();
+  const data = await response.json() as { candidates?: { content: { parts: { text: string }[] } }[] };
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
-
   const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  return JSON.parse(cleaned);
+  return JSON.parse(cleaned) as GymSchedule;
 }
-
-const kv = new Redis({
-  url: process.env.KV_REST_API_URL!,
-  token: process.env.KV_REST_API_TOKEN!,
-});
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Cache-Control', 'no-store');
@@ -147,20 +138,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // 2. Sprawdź czy strona działa
     if (isSiteUnavailable(html, httpResponse.status)) {
-      // Zachowaj stare dane, tylko zaktualizuj flagi
-      const currentState = await kv.get('schedule:current') as object | null;
-      await kv.set('schedule:current', {
+      const currentState = await kvGet<object>('schedule:current');
+      await kvSet('schedule:current', {
         ...(currentState ?? {}),
         siteUnavailable: true,
         lastChecked: new Date().toISOString(),
       });
-
-      await kv.set('schedule:raw-text', {
+      await kvSet('schedule:raw-text', {
         text: html.substring(0, 500),
         fetchedAt: new Date().toISOString(),
         siteUnavailable: true,
       });
-
       return res.status(200).json({ success: true, siteUnavailable: true });
     }
 
@@ -176,34 +164,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const geminiResponse = await callGemini(contentText);
 
     // 5. Porównaj z aktualnym stanem (ignorując metadane)
-    const currentState = await kv.get('schedule:current') as Record<string, unknown> | null;
+    const currentState = await kvGet<Record<string, unknown>>('schedule:current');
     const { lastChecked: _lc, lastChanged: _lg, siteUnavailable: _su, ...currentData } = currentState ?? {};
     const hasChanged = JSON.stringify(currentData) !== JSON.stringify(geminiResponse);
 
     // 6. Zapisz
     if (hasChanged) {
       if (currentState) {
-        const history: unknown[] = (await kv.get('schedule:history')) || [];
-        (history as object[]).push({ state: currentState, archivedAt: new Date().toISOString() });
-        await kv.set('schedule:history', history.slice(-30));
+        const history = (await kvGet<object[]>('schedule:history')) ?? [];
+        history.push({ state: currentState, archivedAt: new Date().toISOString() });
+        await kvSet('schedule:history', history.slice(-30));
       }
-
-      await kv.set('schedule:current', {
+      await kvSet('schedule:current', {
         ...geminiResponse,
         siteUnavailable: false,
         lastChanged: new Date().toISOString(),
         lastChecked: new Date().toISOString(),
       });
     } else {
-      await kv.set('schedule:current', {
-        ...currentState,
+      await kvSet('schedule:current', {
+        ...(currentState ?? {}),
         siteUnavailable: false,
         lastChecked: new Date().toISOString(),
       });
     }
 
     // 7. Zapisz surowy tekst do debugowania
-    await kv.set('schedule:raw-text', {
+    await kvSet('schedule:raw-text', {
       text: contentText.substring(0, 5000),
       fetchedAt: new Date().toISOString(),
       siteUnavailable: false,
