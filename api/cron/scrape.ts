@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import * as cheerio from 'cheerio';
-import { kvGet, kvSet } from '../kv.js';
+import { kvGet, kvSet } from '../kv';
 
 interface DayHours {
   open: string;
