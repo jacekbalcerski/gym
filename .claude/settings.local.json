@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vercel:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_console_messages",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d['projects']['gym-monitor']['architect']['build']['options'], indent=2\\)\\)\")",
+      "Bash(node -e \"const d=require\\('./angular.json'\\); console.log\\(JSON.stringify\\(d.projects['gym-monitor'].architect.build.options, null, 2\\)\\)\")",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_evaluate",
+      "Bash(npm run:*)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/tailwindcss/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@tailwindcss/postcss/package.json'\\).version\\)\")",
+      "Bash(node -e \"const a = require\\('./angular.json'\\); console.log\\(JSON.stringify\\(a.projects['gym-monitor'].architect.build, null, 2\\)\\)\")",
+      "Bash(grep -c \"bg-gray-950\\\\|min-h-screen\\\\|text-white\\\\|rounded-xl\" dist/gym-monitor/browser/styles-*.css)",
+      "Bash(tail -c 300 dist/gym-monitor/browser/styles-*.css)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@angular/build/package.json'\\).version\\)\")",
+      "Bash(curl -s -v \"https://gym-eight-blush.vercel.app/api/cron/scrape\")",
+      "Bash(curl -s \"https://gym-eight-blush.vercel.app/api/schedule\")",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const j=JSON.parse\\(d\\); console.log\\('siteUnavailable:', j.siteUnavailable, '\\\\nlastChecked:', j.lastChecked, '\\\\nregularHours:', JSON.stringify\\(j.regularHours\\), '\\\\nclosures count:', j.closures?.length, '\\\\nparseConfidence:', j.parseConfidence\\);\")",
+      "Bash(curl -s \"https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60\" -H \"User-Agent: Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" -H \"Accept: text/html,application/xhtml+xml\" -H \"Accept-Language: pl-PL,pl;q=0.9\")",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

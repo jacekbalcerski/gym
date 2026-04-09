@@ -10,29 +10,35 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch gym page
-        id: fetch
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright and Chromium
         run: |
-          HTTP_CODE=$(curl -s -o /tmp/gym.html -w "%{http_code}" \
-            'https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60' \
-            -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36' \
-            -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-            -H 'Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8')
-          echo "http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
-          echo "Fetch status: $HTTP_CODE"
+          npm install playwright
+          npx playwright install chromium --with-deps
+
+      - name: Fetch rendered gym page
+        id: fetch
+        run: node scripts/fetch-gym-page.mjs
+        continue-on-error: true
 
       - name: Send to Vercel scraper
         run: |
           HTTP_CODE="${{ steps.fetch.outputs.http_code }}"
-          if [ "$HTTP_CODE" = "200" ]; then
-            echo "Page fetched OK — posting HTML to scraper"
+          if [ "$HTTP_CODE" = "200" ] && [ -f /tmp/gym-text.txt ]; then
+            echo "Page rendered OK — posting text to scraper"
             curl -s -f -X POST \
               '${{ vars.VERCEL_APP_URL }}/api/cron/scrape' \
               -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}' \
               -H 'Content-Type: application/json' \
-              -d "{\"html\": $(jq -Rs '.' /tmp/gym.html)}"
+              -d "{\"text\": $(jq -Rs '.' /tmp/gym-text.txt)}"
           else
-            echo "Fetch failed ($HTTP_CODE) — calling scraper GET (will log site unavailable)"
+            echo "Fetch failed ($HTTP_CODE) — calling scraper without body (will log site unavailable)"
             curl -s -f \
               '${{ vars.VERCEL_APP_URL }}/api/cron/scrape' \
               -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}'

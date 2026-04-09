@@ -123,51 +123,58 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    let html: string;
-    let fetchStatus = 200;
+    let contentText: string;
 
-    // 1a. Jeśli POST z polem html — użyj przekazanego HTML (GitHub Actions bypass)
-    if (req.method === 'POST' && typeof req.body?.html === 'string') {
-      html = req.body.html;
+    // 1a. POST z polem text — pre-extracted text (np. z Playwright w GitHub Actions)
+    if (req.method === 'POST' && typeof req.body?.text === 'string') {
+      contentText = req.body.text;
     } else {
-      // 1b. Fetch HTML bezpośrednio (może być zablokowany przez nginx OSiR)
-      const httpResponse = await fetch(
-        'https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60',
-        {
-          headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language': 'pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7',
-          },
-        }
-      );
-      html = await httpResponse.text();
-      fetchStatus = httpResponse.status;
-    }
+      let html: string;
+      let fetchStatus = 200;
 
-    // 2. Sprawdź czy strona działa
-    if (isSiteUnavailable(html, fetchStatus)) {
-      const currentState = await kvGet<object>('schedule:current');
-      await kvSet('schedule:current', {
-        ...(currentState ?? {}),
-        siteUnavailable: true,
-        lastChecked: new Date().toISOString(),
-      });
-      await kvSet('schedule:raw-text', {
-        text: html.substring(0, 500),
-        fetchedAt: new Date().toISOString(),
-        siteUnavailable: true,
-      });
-      return res.status(200).json({ success: true, siteUnavailable: true });
-    }
+      // 1b. POST z polem html — przekazany HTML (legacy GitHub Actions bypass)
+      if (req.method === 'POST' && typeof req.body?.html === 'string') {
+        html = req.body.html;
+      } else {
+        // 1c. Fetch HTML bezpośrednio (może być zablokowany przez nginx OSiR)
+        const httpResponse = await fetch(
+          'https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60',
+          {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+              'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+              'Accept-Language': 'pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7',
+            },
+          }
+        );
+        html = await httpResponse.text();
+        fetchStatus = httpResponse.status;
+      }
 
-    // 3. Wyciągnij tekst z głównej sekcji
-    const $ = cheerio.load(html);
-    const contentText =
-      $('main').text().trim() ||
-      $('.journal-content-article').text().trim() ||
-      $('article').text().trim() ||
-      $('body').text().trim();
+      // 2. Sprawdź czy strona działa
+      if (isSiteUnavailable(html, fetchStatus)) {
+        const currentState = await kvGet<object>('schedule:current');
+        await kvSet('schedule:current', {
+          ...(currentState ?? {}),
+          siteUnavailable: true,
+          lastChecked: new Date().toISOString(),
+        });
+        await kvSet('schedule:raw-text', {
+          text: html.substring(0, 500),
+          fetchedAt: new Date().toISOString(),
+          siteUnavailable: true,
+        });
+        return res.status(200).json({ success: true, siteUnavailable: true });
+      }
+
+      // 3. Wyciągnij tekst z głównej sekcji
+      const $ = cheerio.load(html);
+      contentText =
+        $('main').text().trim() ||
+        $('.journal-content-article').text().trim() ||
+        $('article').text().trim() ||
+        $('body').text().trim();
+    }
 
     // 4. Wyślij do Gemini
     const geminiResponse = await callGemini(contentText);
