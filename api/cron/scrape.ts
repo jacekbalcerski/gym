@@ -136,17 +136,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (req.method === 'POST' && typeof req.body?.html === 'string') {
         html = req.body.html;
       } else {
-        // 1c. Fetch HTML bezpośrednio (może być zablokowany przez nginx OSiR)
-        const httpResponse = await fetch(
-          'https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60',
-          {
-            headers: {
-              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-              'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-              'Accept-Language': 'pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7',
-            },
-          }
-        );
+        // 1c. Użyj Jina Reader do wyrenderowania strony JS (OSiR blokuje datacenter IPs)
+        const jinaUrl = 'https://r.jina.ai/https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60';
+        const httpResponse = await fetch(jinaUrl, {
+          headers: {
+            'Accept': 'text/plain',
+            'X-Return-Format': 'text',
+            'X-Locale': 'pl-PL',
+          },
+        });
         html = await httpResponse.text();
         fetchStatus = httpResponse.status;
       }
