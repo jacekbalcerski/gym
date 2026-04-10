@@ -49,9 +49,9 @@ function isSiteUnavailable(html: string, statusCode: number): boolean {
   return SITE_UNAVAILABLE_PHRASES.some(phrase => lower.includes(phrase));
 }
 
-async function callGemini(pageText: string): Promise<GymSchedule> {
-  const apiKey = process.env.GEMINI_API_KEY;
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+async function callGroq(pageText: string): Promise<GymSchedule> {
+  const apiKey = process.env.GROQ_API_KEY;
+  const url = 'https://api.groq.com/openai/v1/chat/completions';
 
   const prompt = `Analizujesz tekst ze strony internetowej Hali Sportowej Koło (Obozowa 60, Warszawa).
 Wyciągnij informacje o dostępności SIŁOWNI (nie całej hali, chyba że cały obiekt jest zamknięty).
@@ -102,22 +102,27 @@ ${pageText}
 
   const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.1, maxOutputTokens: 2000 },
+      model: 'llama-3.3-70b-versatile',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.1,
+      max_tokens: 2000,
     }),
   });
 
-  const data = await response.json() as { candidates?: { content: { parts: { text: string }[] } }[]; error?: { message: string } };
-  if (data.error) throw new Error(`Gemini error: ${data.error.message}`);
-  const text = data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
-  if (!text) throw new Error(`Gemini returned no text; full response: ${JSON.stringify(data).substring(0, 500)}`);
+  const data = await response.json() as { choices?: { message: { content: string } }[]; error?: { message: string } };
+  if (data.error) throw new Error(`Groq error: ${data.error.message}`);
+  const text = data.choices?.[0]?.message?.content ?? '';
+  if (!text) throw new Error(`Groq returned no text; full response: ${JSON.stringify(data).substring(0, 500)}`);
   const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
   try {
     return JSON.parse(cleaned) as GymSchedule;
   } catch {
-    throw new Error(`Gemini JSON parse failed; raw text: ${cleaned.substring(0, 500)}`);
+    throw new Error(`Groq JSON parse failed; raw text: ${cleaned.substring(0, 500)}`);
   }
 }
 
@@ -182,8 +187,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         $('body').text().trim();
     }
 
-    // 4. Wyślij do Gemini
-    const geminiResponse = await callGemini(contentText);
+    // 4. Wyślij do Groq
+    const geminiResponse = await callGroq(contentText);
 
     // 5. Porównaj z aktualnym stanem (ignorując metadane)
     const currentState = await kvGet<Record<string, unknown>>('schedule:current');
