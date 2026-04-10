@@ -109,10 +109,16 @@ ${pageText}
     }),
   });
 
-  const data = await response.json() as { candidates?: { content: { parts: { text: string }[] } }[] };
-  const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+  const data = await response.json() as { candidates?: { content: { parts: { text: string }[] } }[]; error?: { message: string } };
+  if (data.error) throw new Error(`Gemini error: ${data.error.message}`);
+  const text = data.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+  if (!text) throw new Error(`Gemini returned no text; full response: ${JSON.stringify(data).substring(0, 500)}`);
   const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  return JSON.parse(cleaned) as GymSchedule;
+  try {
+    return JSON.parse(cleaned) as GymSchedule;
+  } catch {
+    throw new Error(`Gemini JSON parse failed; raw text: ${cleaned.substring(0, 500)}`);
+  }
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -138,6 +144,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       } else {
         // 1c. Użyj Jina Reader do wyrenderowania strony JS (OSiR blokuje datacenter IPs)
         const jinaUrl = 'https://r.jina.ai/https://sport.um.warszawa.pl/waw/osir-wola/-/hala-sportowa-kolo-obozowa-60';
+        console.log('Fetching via Jina Reader:', jinaUrl);
         const httpResponse = await fetch(jinaUrl, {
           headers: {
             'Accept': 'text/plain',
@@ -145,8 +152,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             'X-Locale': 'pl-PL',
           },
         });
-        html = await httpResponse.text();
         fetchStatus = httpResponse.status;
+        html = await httpResponse.text();
+        console.log(`Jina response: status=${fetchStatus}, length=${html.length}, preview=${html.substring(0, 200)}`);
       }
 
       // 2. Sprawdź czy strona działa
@@ -212,7 +220,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({ success: true, changed: hasChanged });
   } catch (error) {
-    console.error('Scrape error:', error);
-    return res.status(500).json({ error: 'Scrape failed' });
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('Scrape error:', message);
+    return res.status(500).json({ error: 'Scrape failed', detail: message });
   }
 }
