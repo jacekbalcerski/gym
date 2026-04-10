@@ -198,7 +198,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 6. Zapisz
     if (hasChanged) {
       if (currentState) {
-        const history = (await kvGet<object[]>('schedule:history')) ?? [];
+        const rawHistory = await kvGet<unknown>('schedule:history');
+        const history: object[] = Array.isArray(rawHistory) ? rawHistory : [];
         history.push({ state: currentState, archivedAt: new Date().toISOString() });
         await kvSet('schedule:history', history.slice(-30));
       }

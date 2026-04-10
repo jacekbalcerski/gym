@@ -4,7 +4,6 @@ const token = process.env.KV_REST_API_TOKEN!;
 
 const headers = () => ({
   Authorization: `Bearer ${token}`,
-  'Content-Type': 'application/json',
 });
 
 export async function kvGet<T>(key: string): Promise<T | null> {
@@ -17,7 +16,7 @@ export async function kvGet<T>(key: string): Promise<T | null> {
 export async function kvSet(key: string, value: unknown): Promise<void> {
   await fetch(`${url}/set/${encodeURIComponent(key)}`, {
     method: 'POST',
-    headers: headers(),
-    body: JSON.stringify(JSON.stringify(value)),
+    headers: { ...headers(), 'Content-Type': 'text/plain' },
+    body: JSON.stringify(value),
   });
 }
