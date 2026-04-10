@@ -1,0 +1,336 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - img [ref=e3]
+    - list:
+      - listitem:
+        - link "Przejdź do głównej treści" [ref=e5] [cursor=pointer]:
+          - /url: "#mainContent"
+      - listitem:
+        - link "Przejdź do menu" [ref=e6] [cursor=pointer]:
+          - /url: "#skipToMenu"
+      - listitem:
+        - link "Przejdź do wyszukiwarki" [ref=e7] [cursor=pointer]:
+          - /url: "#skipToSearch"
+      - listitem:
+        - link "Przejdź do stopki" [ref=e8] [cursor=pointer]:
+          - /url: "#footer"
+    - generic [ref=e9]:
+      - banner [ref=e10]:
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - link "OSiR Wola - Miasto Stołeczne Warszawa - Strona Główna" [ref=e14] [cursor=pointer]:
+              - /url: https://sport.um.warszawa.pl/waw/osir-wola
+              - img "Logotyp - Miasto Stołeczne Warszawa - OSiR Wola" [ref=e15]
+            - generic [ref=e25]:
+              - generic [ref=e26]:
+                - generic [ref=e27] [cursor=pointer]: Szukaj na portalu po wpisaniu minimum trzech znaków możesz skorzystać z podpowiedzi na liście poniżej
+                - textbox "Szukaj na portalu po wpisaniu minimum trzech znaków możesz skorzystać z podpowiedzi na liście poniżej" [ref=e28]:
+                  - /placeholder: Szukaj na portalu
+                - generic [ref=e29]: Wprowadź słowo lub frazę w celu wyszukania informacji, które Ciebie interesują.
+              - generic [ref=e30]:
+                - button "Szukaj" [ref=e31] [cursor=pointer]:
+                  - generic [ref=e32]: 
+                - button [ref=e33] [cursor=pointer]:
+                  - generic [ref=e35]: menu główne
+            - generic [ref=e38]:
+              - generic [ref=e39]:
+                - link "(Link otwiera się w nowej karcie)" [ref=e40] [cursor=pointer]:
+                  - /url: https://um.warszawa.pl/waw/europa/projekty-unijne-i-inne
+                  - img [ref=e41]
+                  - generic [ref=e71]: (Link otwiera się w nowej karcie)
+                - list [ref=e72]:
+                  - listitem [ref=e73]:
+                    - link "Nasz profil na portalu LinkedIn Link otwiera się w nowej karcie" [ref=e74] [cursor=pointer]:
+                      - /url: https://pl.linkedin.com/showcase/grow-with-warsaw/
+                      - img [ref=e75]: 
+                      - generic [ref=e79]: Nasz profil na portalu LinkedIn
+                      - generic [ref=e80]: Link otwiera się w nowej karcie
+              - list [ref=e81]:
+                - listitem [ref=e82]:
+                  - button "Duży rozmiar czcionki" [ref=e83] [cursor=pointer]:
+                    - generic [ref=e84]: 
+                    - text: 
+                    - generic [ref=e85]: Duży rozmiar czcionki
+                - listitem [ref=e86]:
+                  - button "Wersja kontrastowa" [ref=e87] [cursor=pointer]:
+                    - generic [ref=e88]: 
+                    - generic [ref=e89]: Wersja kontrastowa
+          - navigation "Menu główne" [ref=e90]:
+            - list [ref=e97]:
+              - listitem [ref=e98]:
+                - button "O nas" [ref=e99] [cursor=pointer]:
+                  - text: O nas
+                  - img [ref=e102]
+              - listitem [ref=e104]:
+                - link "Kontakt" [ref=e105] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/kontakt
+              - listitem [ref=e106]:
+                - link "Obiekty sportowe" [ref=e107] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/obiekty-sportowe
+              - listitem [ref=e108]:
+                - link "Zajęcia sportowe" [ref=e109] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/wyszukiwarka-zajec-sportowych
+              - listitem [ref=e110]:
+                - link "Imprezy" [ref=e111] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/imprezy-sportowe
+              - listitem [ref=e112]:
+                - link "Cennik" [ref=e113] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/cennik
+              - listitem [ref=e114]:
+                - link "Honorowane karty" [ref=e115] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/-/honorowane-karty
+              - listitem [ref=e116]:
+                - button "Pokaż pozostałe elementy menu nawigacyjnego " [ref=e117] [cursor=pointer]:
+                  - generic [ref=e118]: Pokaż pozostałe elementy menu nawigacyjnego
+                  - generic [ref=e119]: 
+                - list [ref=e120]:
+                  - listitem [ref=e121]:
+                    - link "Zajęcia partnerów" [ref=e122] [cursor=pointer]:
+                      - /url: https://sport.um.warszawa.pl/waw/osir-wola/zajecia-partnerow
+                  - listitem [ref=e123]:
+                    - link "Praca" [ref=e124] [cursor=pointer]:
+                      - /url: https://sport.um.warszawa.pl/waw/osir-wola/praca
+      - main [ref=e125]:
+        - generic [ref=e128]:
+          - navigation "Nawigacja okruszkowa" [ref=e137]:
+            - list [ref=e138]:
+              - listitem [ref=e139]:
+                - link "Sport" [ref=e140] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl
+                  - generic [ref=e141]: Sport
+                - img [ref=e142]
+              - listitem [ref=e144]:
+                - link "OSiR Wola" [ref=e145] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola
+                  - generic [ref=e146]: OSiR Wola
+                - img [ref=e147]
+              - listitem [ref=e149]:
+                - generic [ref=e150]: Hala sportowa "Koło"– Obozowa 60
+          - generic [ref=e159]:
+            - article [ref=e160]:
+              - article [ref=e168]:
+                - generic [ref=e169]:
+                  - generic [ref=e170]:
+                    - heading "Hala sportowa \"Koło\"– Obozowa 60" [level=1] [ref=e173]
+                    - generic [ref=e174]:
+                      - button "Pobierz jako plik PDF" [ref=e175] [cursor=pointer]:
+                        - generic [ref=e176]: 
+                        - generic [ref=e177]: Pobierz jako plik PDF
+                      - link "Drukuj Link otwiera się w nowej karcie" [ref=e178] [cursor=pointer]:
+                        - /url: javascript:window.print();
+                        - generic [ref=e179]: 
+                        - generic [ref=e180]: Drukuj
+                        - generic [ref=e181]: Link otwiera się w nowej karcie
+                      - generic [ref=e182]:
+                        - button "Link otwiera się w nowej karcie" [ref=e183] [cursor=pointer]:
+                          - generic [ref=e184]: 
+                          - generic [ref=e185]: Link otwiera się w nowej karcie
+                        - text:   
+                  - article [ref=e189]:
+                    - generic [ref=e190]:
+                      - generic [ref=e191]:
+                        - figure "wnętrze hali koło" [ref=e193]:
+                          - generic [ref=e194]:
+                            - 'button "Powiększ obraz:: wnętrze hali koło"':
+                              - img "wnętrze hali koło" [ref=e196] [cursor=pointer]
+                          - generic [ref=e198]: wnętrze hali koło
+                        - paragraph [ref=e199]:
+                          - text: Wielofunkcyjna hala sportowa jest dostosowana do rozgrywania zawodów i treningów w koszykówce, piłce nożnej halowej czy siatkówce.
+                          - text: Hala Koło została dopuszczona do rozgrywek przez PZKosz oraz PZPS.
+                      - heading "Informacje ogólne" [level=2] [ref=e200]
+                      - paragraph [ref=e201]: W hali znajdują się dwie tablice świetlne przystosowana do rozgrywania zawodów we wszystkich w/w dyscyplinach oraz trybuny stanowiące część widowiskową. Hala posiada własny system nagłośnienia.
+                      - list [ref=e202]:
+                        - listitem [ref=e203]: "obiekt przeznaczony do uprawiania: piłki ręcznej, piłki siatkowej, koszykówki, piłki nożnej halowej"
+                        - listitem [ref=e204]:
+                          - text: "wymiary pola gry (44 x 29,92 m) i poszczególnych boisk: w układzie podłużnym hali wyznaczone jest pełnowymiarowe boisko do koszykówki (28 x 15 m) i siatkówki (18 x 9 m) oraz pełnowymiarowe boisko do piłki ręcznej (40 x 20 m)."
+                          - text: W układzie poprzecznym wyznaczone są 3 boiska treningowe do siatkówki i 3 do koszykówki.
+                        - listitem [ref=e205]: "wysokość: 16 m/ nad trybunami 12 m"
+                        - listitem [ref=e206]: "liczba sektorów: 3 sektory, rozdzielane kotarą"
+                        - listitem [ref=e207]: "nawierzchnia: parkiet"
+                        - listitem [ref=e208]: "oświetlenie: lux"
+                        - listitem [ref=e209]: "widownia: na 396 osób"
+                        - listitem [ref=e210]: "nagłośnienie: tak"
+                        - listitem [ref=e211]: "tablica wyników: tak"
+                      - heading "Dodatkowe informacje" [level=2] [ref=e212]
+                      - list [ref=e213]:
+                        - listitem [ref=e214]: 11 szatni z dostępem do natrysków.
+                        - listitem [ref=e215]: siłownia
+                        - listitem [ref=e216]: sala fitness
+                        - listitem [ref=e217]: kort do squasha
+                      - paragraph [ref=e218]: Oprócz imprez sportowych istnieje możliwość wynajęcia hali na inne wydarzenia.
+                      - paragraph [ref=e219]: Z hali można korzystać codziennie w godzinach pracy obiektu po wcześniejszej rezerwacji terminu telefonicznie lub e-mailowo, w przypadku siłowni nie ma potrzeby rezerwacji telefonicznej.
+                      - paragraph [ref=e220]:
+                        - link "Regulaminy OSiR Wola" [ref=e222] [cursor=pointer]:
+                          - /url: /waw/osir-wola/-/regulaminy-osir-wola
+                      - paragraph [ref=e223]:
+                        - link "Regulamin bezpłatnych wejść na siłownię dla osób powyżej 60 r. ż." [ref=e225] [cursor=pointer]:
+                          - /url: /documents/63416001/96399976/Regulamin-+si%C5%82ownie+dla+senior%C3%B3w.pdf/f8f42d6b-807b-3e2a-a8a4-85f0bac12f7b?t=1706513596042
+                      - paragraph [ref=e226]:
+                        - link "Cennik" [ref=e228] [cursor=pointer]:
+                          - /url: /waw/osir-wola/cennik
+                      - paragraph [ref=e229]:
+                        - link "Zajęcia sportowe" [ref=e231] [cursor=pointer]:
+                          - /url: /waw/osir-wola/wyszukiwarka-zajec-sportowych?p_p_id=com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_hz0eN6CDK828&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_hz0eN6CDK828_f_categories_70214275=70214280&_com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_hz0eN6CDK828_f_categories_69680328=69680336
+                      - paragraph [ref=e232]:
+                        - link "Wykaz nieruchomości - pomieszczenia magazynowe" [ref=e234] [cursor=pointer]:
+                          - /url: /documents/63416001/70211936/wykaz+nieruchomosci+-+pow.+magazynowa.pdf/f68f045d-e5d3-26de-4927-ab220a753d0b?t=1723201650864
+                      - heading "Adres" [level=2] [ref=e235]
+                      - paragraph [ref=e236]:
+                        - text: ul. Obozowa 60
+                        - text: 01-423 Warszawa
+                      - heading "Kontakt" [level=2] [ref=e237]
+                      - paragraph [ref=e238]:
+                        - text: tel.
+                        - link "22 877 38 06" [ref=e239] [cursor=pointer]:
+                          - /url: tel:22 877 38 06
+                        - text: "e-mail:"
+                        - link "kolo@osirwola.pl" [ref=e240] [cursor=pointer]:
+                          - /url: mailto:kolo@osirwola.pl
+                      - heading "Godziny otwarcia" [level=2] [ref=e241]
+                      - list [ref=e242]:
+                        - listitem [ref=e243]: "poniedziałek – piątek: 8:00 – 22:00"
+                        - listitem [ref=e244]: "sobota - niedziela: 8:00 -22:00"
+                      - paragraph [ref=e245]:
+                        - strong [ref=e246]: Kasa jest czynna w godzinach 8.00-21.15.
+                      - paragraph [ref=e247]:
+                        - strong [ref=e248]: Siłownia jest czynna w godzinach 8.00-21.30.
+                      - paragraph [ref=e249]
+                      - paragraph [ref=e250]:
+                        - strong [ref=e251]: "Specjalne godziny funkcjonowania obiektu – imprezy, wydarzenia lub inne:"
+                      - paragraph [ref=e252]
+                      - paragraph [ref=e253]: "Godziny pracy obiektu:"
+                      - paragraph
+                      - paragraph
+                      - paragraph [ref=e254]:
+                        - strong [ref=e258]: "Kwiecień 2026:"
+                      - paragraph [ref=e259]: "Siłownia:"
+                      - paragraph [ref=e260]: 08.04.2026 siłownia będzie nieczynna 16.00-18.00
+                      - paragraph [ref=e261]: 09.04.2026 siłownia będzie nieczynna 15.30-16.30
+                      - paragraph [ref=e262]: 10.04.2026 siłownia będzie nieczynna 15.00-16.00
+                      - paragraph [ref=e263]: 12.04.2026 siłownia będzie nieczynna 11.30-13.30
+                      - paragraph [ref=e264]: 11.04.2026 siłownia będzie czynna od 19.00-21.30
+                      - paragraph [ref=e265]
+                      - paragraph [ref=e266]:
+                        - generic [ref=e269]: "Mecze:"
+                      - paragraph [ref=e270]: 04.04.2026 Dziki mecz godz.15.30
+                      - paragraph [ref=e271]: 11.04.2026 Polonia mecz godz. 15.00
+                      - paragraph [ref=e272]: 18.04.2026 Dziki mecz godz. 12.30
+                      - paragraph [ref=e273]: 30.04.2026 Dziki mecz godz.18.00
+                      - paragraph [ref=e274]
+                      - paragraph [ref=e277]:
+                        - generic [ref=e280]: "Imprezy :"
+                      - paragraph [ref=e281]
+                      - paragraph [ref=e282]
+                      - paragraph
+                      - paragraph [ref=e283]:
+                        - generic [ref=e286]: "Godziny pracy obiektu:"
+                      - paragraph [ref=e287]: 04.04.2026 obiekt nieczynny
+                      - paragraph [ref=e288]: 11.04.2026. obiekt czynny 19.00-22.00
+                      - paragraph [ref=e289]: 18.04.2026 obiekt nieczynny
+                      - paragraph [ref=e290]: 30.04.2026 obiekt czynny 8.00-10.00
+                      - paragraph [ref=e291]
+                      - paragraph
+                      - paragraph
+                      - paragraph [ref=e292]
+                      - heading "Honorujemy karty" [level=2] [ref=e293]
+                      - generic [ref=e294]:
+                        - link "Grafika. Karta sportowa Multisport" [ref=e295] [cursor=pointer]:
+                          - /url: /waw/osir-wola/-/honorowane-karty#Multisport
+                          - img "Grafika. Karta sportowa Multisport" [ref=e296]
+                        - link "Karta sportowa OK System" [ref=e297] [cursor=pointer]:
+                          - /url: /waw/osir-wola/-/honorowane-karty#OK
+                          - img "Karta sportowa OK System" [ref=e298]
+                        - link "Grafika. Karta sportowa FitProfit" [ref=e299] [cursor=pointer]:
+                          - /url: /waw/osir-wola/-/honorowane-karty#Fitprofit
+                          - img "Grafika. Karta sportowa FitProfit" [ref=e300]
+                      - heading "Dostępność dla osób z niepełnosprawnościami" [level=2] [ref=e302]
+                      - generic:
+                        - 'button "Powiększ obraz:: Ikona. Dostępne z pomocą dla osób poruszających się na wózkach"':
+                          - img "Ikona. Dostępne z pomocą dla osób poruszających się na wózkach"
+                        - 'button "Powiększ obraz:: Ikona. Toaleta dostępna dla osób na wózkach"':
+                          - img "Ikona. Toaleta dostępna dla osób na wózkach"
+                        - 'button "Powiększ obraz:: Ikona. Udogodnienia dla osób niewidomych"':
+                          - img "Ikona. Udogodnienia dla osób niewidomych"
+                        - 'button "Powiększ obraz:: Ikona. Udogodnienia dla osób z niepełnosprawnościami intelektualnymi i z problemami z czytaniem"':
+                          - img "Ikona. Udogodnienia dla osób z niepełnosprawnościami intelektualnymi i z problemami z czytaniem"
+                        - 'button "Powiększ obraz:: Ikona. Możliwość wejścia z psem asystującym"':
+                          - img "Ikona. Możliwość wejścia z psem asystującym"
+                        - 'button "Powiększ obraz:: Ikona. Oznaczenia w Braille’u"':
+                          - img "Ikona. Oznaczenia w Braille’u"
+            - complementary [ref=e303]:
+              - generic [ref=e311]:
+                - heading "Pozostałe" [level=2] [ref=e312]
+                - list [ref=e313]:
+                  - listitem [ref=e314]:
+                    - time [ref=e315]: 01.04.2026
+                    - heading "Wesołych Świąt Wielkanocnych" [level=3] [ref=e316]:
+                      - link "Wesołych Świąt Wielkanocnych" [ref=e317] [cursor=pointer]:
+                        - /url: https://sport.um.warszawa.pl/waw/osir-wola/-/wesolych-swiat-wielkanocnych-1
+                  - listitem [ref=e318]:
+                    - time [ref=e319]: 27.03.2026
+                    - 'heading "Wykład dla seniorów: \"Aktywne życie - lepsze życie\"" [level=3] [ref=e320]':
+                      - 'link "Wykład dla seniorów: \"Aktywne życie - lepsze życie\"" [ref=e321] [cursor=pointer]':
+                        - /url: https://sport.um.warszawa.pl/waw/osir-wola/-/wyklad-dla-seniorow-aktywne-zycie-lepsze-zycie
+                  - listitem [ref=e322]:
+                    - time [ref=e323]: 27.03.2026
+                    - heading "Godziny otwarcia obiektów OSiR Wola w okresie Świąt Wielkanocnych" [level=3] [ref=e324]:
+                      - link "Godziny otwarcia obiektów OSiR Wola w okresie Świąt Wielkanocnych" [ref=e325] [cursor=pointer]:
+                        - /url: https://sport.um.warszawa.pl/waw/osir-wola/-/godziny-otwarcia-obiektow-osir-wola-w-okresie-swiat-wielkanocnych-1
+                  - listitem [ref=e326]:
+                    - time [ref=e327]: 26.03.2026
+                    - heading "O Woli do Woli - spotkanie Burmistrza z mieszkańcami w dniu 8.04.2026 r." [level=3] [ref=e328]:
+                      - link "O Woli do Woli - spotkanie Burmistrza z mieszkańcami w dniu 8.04.2026 r." [ref=e329] [cursor=pointer]:
+                        - /url: https://sport.um.warszawa.pl/waw/osir-wola/-/o-woli-do-woli-spotkanie-burmistrza-z-mieszkancami-w-dniu-8-04-2026-r-
+                  - listitem [ref=e330]:
+                    - time [ref=e331]: 18.03.2026
+                    - heading "Świąteczno-wiosenne spotkanie na Woli 2026" [level=3] [ref=e332]:
+                      - link "Świąteczno-wiosenne spotkanie na Woli 2026" [ref=e333] [cursor=pointer]:
+                        - /url: https://sport.um.warszawa.pl/waw/osir-wola/-/swiateczno-wiosenne-spotkanie-na-woli-2026
+                - link "więcej artykułów" [ref=e335] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/szukaj
+                  - generic [ref=e336]: więcej
+                  - generic [ref=e337]: artykułów
+                  - generic [ref=e338]: 
+      - contentinfo [ref=e341]:
+        - generic [ref=e342]:
+          - generic [ref=e344]:
+            - generic [ref=e346]:
+              - link "OSiR Wola - Miasto Stołeczne Warszawa - Strona Główna":
+                - /url: https://sport.um.warszawa.pl/waw/osir-wola
+            - list [ref=e354]:
+              - listitem [ref=e355]:
+                - link "Zamówienia publiczne" [ref=e356] [cursor=pointer]:
+                  - /url: https://sport.um.warszawa.pl/waw/osir-wola/zamowienia-publiczne
+              - listitem [ref=e357]:
+                - link "BIP Link otwiera się w nowej karcie" [ref=e358] [cursor=pointer]:
+                  - /url: https://osirwola.bip.warszawa.pl
+                  - generic [ref=e359]:
+                    - text: BIP
+                    - img [ref=e360]
+                  - generic [ref=e362]: Link otwiera się w nowej karcie
+              - listitem [ref=e363]:
+                - link "Polityka prywatności" [ref=e364] [cursor=pointer]:
+                  - /url: https://um.warszawa.pl/polityka-prywatnosci
+              - listitem [ref=e365]:
+                - link "Kontakt z redakcją" [ref=e366] [cursor=pointer]:
+                  - /url: https://um.warszawa.pl/kontakt
+          - paragraph [ref=e368]: Urząd m.st. Warszawy
+    - text: 
+  - dialog "Logotyp - Miasto Stołeczne Warszawa - OSiR Wola Ustawienia plików cookies" [ref=e370]:
+    - generic [ref=e371]:
+      - generic [ref=e372]:
+        - heading "Logotyp - Miasto Stołeczne Warszawa - OSiR Wola Ustawienia plików cookies" [level=2] [ref=e373]:
+          - img "Logotyp - Miasto Stołeczne Warszawa - OSiR Wola" [ref=e374]
+          - generic [ref=e375]: Ustawienia plików cookies
+        - generic [ref=e377]:
+          - paragraph [ref=e378]: Ochrona prywatności użytkowników naszego serwisu ma dla nas bardzo duże znaczenie. Ograniczamy wykorzystanie i zbieranie informacji o użytkownikach serwisu do niezbędnego minimum wymaganego do świadczenia usług na najwyższym poziomie. Pliki Cookies wykorzystujemy w celu prawidłowego działania strony oraz analizy ilości odwiedzin. Po kliknięciu w przycisk "Ustawienia cookie" możesz otworzyć menu, które umożliwia wyrażenie zgód na wybrane pliki cookie. Możesz też od razu zaakceptować wszystkie pliki przyciskiem „Zaakceptuj wszystkie”.
+          - paragraph [ref=e379]:
+            - text: Zmiana ustawień oraz więcej informacji o ochronie danych osobowych, ochronie praw autorskich i plikach Cookies dostępne są na stronie
+            - link "Polityka prywatności i Cookies" [ref=e380] [cursor=pointer]:
+              - /url: https://um.warszawa.pl/polityka-prywatnosci
+              - text: Polityka prywatności i Cookies
+              - img [ref=e381]
+            - text: .
+      - generic [ref=e384]:
+        - button "Ustawienia ciasteczek" [ref=e385] [cursor=pointer]
+        - button "Zaakceptuj wszystkie" [ref=e386] [cursor=pointer]

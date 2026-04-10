@@ -1,0 +1,668 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fjacekbalcerski%2Fgym
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=jacekbalcerski%2Fgym
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "jacekbalcerski" [ref=e70] [cursor=pointer]:
+            - /url: /jacekbalcerski
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "gym" [ref=e73] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fjacekbalcerski%2Fgym
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 0" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fjacekbalcerski%2Fgym
+                - img [ref=e82]
+                - text: Fork
+                - generic "0" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fjacekbalcerski%2Fgym
+                - img [ref=e88]
+                - text: Star
+                - generic "0 users starred this repository" [ref=e90]: "0"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues" [ref=e99] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+          - listitem [ref=e104]:
+            - link "Pull requests" [ref=e105] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/pulls
+              - img [ref=e106]
+              - generic [ref=e108]: Pull requests
+          - listitem [ref=e109]:
+            - link "Actions" [ref=e110] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/actions
+              - img [ref=e111]
+              - generic [ref=e113]: Actions
+          - listitem [ref=e114]:
+            - link "Projects" [ref=e115] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/projects
+              - img [ref=e116]
+              - generic [ref=e118]: Projects
+          - listitem [ref=e119]:
+            - link "Security and quality" [ref=e120] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/security
+              - img [ref=e121]
+              - generic [ref=e123]: Security and quality
+          - listitem [ref=e124]:
+            - link "Insights" [ref=e125] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/pulse
+              - img [ref=e126]
+              - generic [ref=e128]: Insights
+    - generic [ref=e141]:
+      - heading "jacekbalcerski/gym" [level=1] [ref=e143]
+      - generic [ref=e144]:
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - button "master branch" [ref=e151] [cursor=pointer]:
+                - generic [ref=e152]:
+                  - generic [ref=e154]:
+                    - img [ref=e156]
+                    - generic [ref=e159]: master
+                  - generic:
+                    - img
+              - generic [ref=e160]:
+                - link "Go to Branches page" [ref=e161] [cursor=pointer]:
+                  - /url: /jacekbalcerski/gym/branches
+                  - img [ref=e162]
+                - link "Go to Tags page" [ref=e164] [cursor=pointer]:
+                  - /url: /jacekbalcerski/gym/tags
+                  - img [ref=e165]
+            - generic [ref=e167]:
+              - generic [ref=e171]:
+                - img [ref=e173]
+                - combobox "Go to file" [ref=e175]
+              - button "Code" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]:
+                  - generic:
+                    - img
+                  - generic [ref=e178]: Code
+                  - generic:
+                    - img
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - heading "Folders and files" [level=2] [ref=e181]
+              - table "Folders and files" [ref=e182]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e183]:
+                  - row "Latest commit jacekbalcerski claude commits by jacekbalcerski and commits by claude Fix CJS compilation for Vercel serverless functions Open commit details success Commit dbd727a · Apr 9, 20269 minutes ago History 14 Commits" [ref=e184]:
+                    - cell "Latest commit jacekbalcerski claude commits by jacekbalcerski and commits by claude Fix CJS compilation for Vercel serverless functions Open commit details success Commit dbd727a · Apr 9, 20269 minutes ago History 14 Commits" [ref=e185]:
+                      - generic [ref=e186]:
+                        - heading "Latest commit" [level=2] [ref=e187]
+                        - generic [ref=e188]:
+                          - generic [ref=e189]:
+                            - generic [ref=e191]:
+                              - img "jacekbalcerski" [ref=e192]
+                              - img "claude" [ref=e193]
+                            - link "commits by jacekbalcerski" [ref=e195] [cursor=pointer]:
+                              - /url: /jacekbalcerski/gym/commits?author=jacekbalcerski
+                              - text: jacekbalcerski
+                            - generic [ref=e196]: and
+                            - link "commits by claude" [ref=e198] [cursor=pointer]:
+                              - /url: /jacekbalcerski/gym/commits?author=claude
+                              - text: claude
+                          - generic [ref=e199]:
+                            - link "Fix CJS compilation for Vercel serverless functions" [ref=e202] [cursor=pointer]:
+                              - /url: /jacekbalcerski/gym/commit/dbd727a8dd3cd7c24ad4c08965e35f9444b132ed
+                            - button "Open commit details" [ref=e203] [cursor=pointer]:
+                              - img [ref=e204]
+                            - button "success" [ref=e206] [cursor=pointer]:
+                              - img [ref=e207]
+                        - generic [ref=e209]:
+                          - generic [ref=e211]:
+                            - link "Commit dbd727a" [ref=e212] [cursor=pointer]:
+                              - /url: /jacekbalcerski/gym/commit/dbd727a8dd3cd7c24ad4c08965e35f9444b132ed
+                              - text: dbd727a
+                            - text: ·
+                            - generic "Apr 9, 2026, 9:08 AM GMT+2" [ref=e213]: Apr 9, 20269 minutes ago
+                          - generic [ref=e214]:
+                            - heading "History" [level=2] [ref=e215]
+                            - link "14 Commits" [ref=e216] [cursor=pointer]:
+                              - /url: /jacekbalcerski/gym/commits/master/
+                              - generic [ref=e217]:
+                                - generic:
+                                  - img
+                                - generic [ref=e218]: 14 Commits
+                  - row ".vscode, (Directory) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e219]:
+                    - cell ".vscode, (Directory)" [ref=e220]:
+                      - generic [ref=e221]:
+                        - img [ref=e222]
+                        - link ".vscode, (Directory)" [ref=e227] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/tree/master/.vscode
+                          - text: .vscode
+                    - cell "Initial Angular 21 project scaffold" [ref=e228]:
+                      - link "Initial Angular 21 project scaffold" [ref=e231] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e232]:
+                      - generic [ref=e233]: Apr 8, 202617 hours ago
+                  - row "api, (Directory) Fix CJS compilation for Vercel serverless functions Apr 9, 20269 minutes ago" [ref=e234]:
+                    - cell "api, (Directory)" [ref=e235]:
+                      - generic [ref=e236]:
+                        - img [ref=e237]
+                        - link "api, (Directory)" [ref=e242] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/tree/master/api
+                          - text: api
+                    - cell "Fix CJS compilation for Vercel serverless functions" [ref=e243]:
+                      - link "Fix CJS compilation for Vercel serverless functions" [ref=e246] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/dbd727a8dd3cd7c24ad4c08965e35f9444b132ed
+                    - cell "Apr 9, 20269 minutes ago" [ref=e247]:
+                      - generic [ref=e248]: Apr 9, 20269 minutes ago
+                  - row "public, (Directory) Add PWA support and install dependencies Apr 8, 202617 hours ago" [ref=e249]:
+                    - cell "public, (Directory)" [ref=e250]:
+                      - generic [ref=e251]:
+                        - img [ref=e252]
+                        - link "public, (Directory)" [ref=e257] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/tree/master/public
+                          - text: public
+                    - cell "Add PWA support and install dependencies" [ref=e258]:
+                      - link "Add PWA support and install dependencies" [ref=e261] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/0d4aadc24356c408f15b5844e08a1f14b93a2803
+                    - cell "Apr 8, 202617 hours ago" [ref=e262]:
+                      - generic [ref=e263]: Apr 8, 202617 hours ago
+                  - row "src, (Directory) Handle OSiR site unavailability gracefully Apr 8, 202614 hours ago" [ref=e264]:
+                    - cell "src, (Directory)" [ref=e265]:
+                      - generic [ref=e266]:
+                        - img [ref=e267]
+                        - link "src, (Directory)" [ref=e272] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/tree/master/src
+                          - text: src
+                    - cell "Handle OSiR site unavailability gracefully" [ref=e273]:
+                      - link "Handle OSiR site unavailability gracefully" [ref=e276] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/28f62dc989e1f54ba491a324584cabaeb4023079
+                    - cell "Apr 8, 202614 hours ago" [ref=e277]:
+                      - generic [ref=e278]: Apr 8, 202614 hours ago
+                  - row ".editorconfig, (File) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e279]:
+                    - cell ".editorconfig, (File)" [ref=e280]:
+                      - generic [ref=e281]:
+                        - img [ref=e282]
+                        - link ".editorconfig, (File)" [ref=e287] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/.editorconfig
+                          - text: .editorconfig
+                    - cell "Initial Angular 21 project scaffold" [ref=e288]:
+                      - link "Initial Angular 21 project scaffold" [ref=e291] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e292]:
+                      - generic [ref=e293]: Apr 8, 202617 hours ago
+                  - row ".gitignore, (File) Remove secrets from repo, fix .gitignore Apr 8, 202615 hours ago" [ref=e294]:
+                    - cell ".gitignore, (File)" [ref=e295]:
+                      - generic [ref=e296]:
+                        - img [ref=e297]
+                        - link ".gitignore, (File)" [ref=e302] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/.gitignore
+                          - text: .gitignore
+                    - cell "Remove secrets from repo, fix .gitignore" [ref=e303]:
+                      - link "Remove secrets from repo, fix .gitignore" [ref=e306] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/b4c90269e9b20598ebf97c91459ead2a1cd45ad9
+                    - cell "Apr 8, 202615 hours ago" [ref=e307]:
+                      - generic [ref=e308]: Apr 8, 202615 hours ago
+                  - row ".prettierrc, (File) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e309]:
+                    - cell ".prettierrc, (File)" [ref=e310]:
+                      - generic [ref=e311]:
+                        - img [ref=e312]
+                        - link ".prettierrc, (File)" [ref=e317] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/.prettierrc
+                          - text: .prettierrc
+                    - cell "Initial Angular 21 project scaffold" [ref=e318]:
+                      - link "Initial Angular 21 project scaffold" [ref=e321] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e322]:
+                      - generic [ref=e323]: Apr 8, 202617 hours ago
+                  - row "README.md, (File) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e324]:
+                    - cell "README.md, (File)" [ref=e325]:
+                      - generic [ref=e326]:
+                        - img [ref=e327]
+                        - link "README.md, (File)" [ref=e332] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/README.md
+                          - text: README.md
+                    - cell "Initial Angular 21 project scaffold" [ref=e333]:
+                      - link "Initial Angular 21 project scaffold" [ref=e336] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e337]:
+                      - generic [ref=e338]: Apr 8, 202617 hours ago
+                  - row "angular.json, (File) Handle OSiR site unavailability gracefully Apr 8, 202614 hours ago" [ref=e339]:
+                    - cell "angular.json, (File)" [ref=e340]:
+                      - generic [ref=e341]:
+                        - img [ref=e342]
+                        - link "angular.json, (File)" [ref=e347] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/angular.json
+                          - text: angular.json
+                    - cell "Handle OSiR site unavailability gracefully" [ref=e348]:
+                      - link "Handle OSiR site unavailability gracefully" [ref=e351] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/28f62dc989e1f54ba491a324584cabaeb4023079
+                    - cell "Apr 8, 202614 hours ago" [ref=e352]:
+                      - generic [ref=e353]: Apr 8, 202614 hours ago
+                  - row "gym-monitor.iml, (File) Handle OSiR site unavailability gracefully Apr 8, 202614 hours ago" [ref=e354]:
+                    - cell "gym-monitor.iml, (File)" [ref=e355]:
+                      - generic [ref=e356]:
+                        - img [ref=e357]
+                        - link "gym-monitor.iml, (File)" [ref=e362] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/gym-monitor.iml
+                          - text: gym-monitor.iml
+                    - cell "Handle OSiR site unavailability gracefully" [ref=e363]:
+                      - link "Handle OSiR site unavailability gracefully" [ref=e366] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/28f62dc989e1f54ba491a324584cabaeb4023079
+                    - cell "Apr 8, 202614 hours ago" [ref=e367]:
+                      - generic [ref=e368]: Apr 8, 202614 hours ago
+                  - row "ngsw-config.json, (File) Add Angular frontend with PWA and Tailwind CSS Apr 8, 202617 hours ago" [ref=e369]:
+                    - cell "ngsw-config.json, (File)" [ref=e370]:
+                      - generic [ref=e371]:
+                        - img [ref=e372]
+                        - link "ngsw-config.json, (File)" [ref=e377] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/ngsw-config.json
+                          - text: ngsw-config.json
+                    - cell "Add Angular frontend with PWA and Tailwind CSS" [ref=e378]:
+                      - link "Add Angular frontend with PWA and Tailwind CSS" [ref=e381] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/fd1e4f673c24cae9422d4621128d7dc52a214540
+                    - cell "Apr 8, 202617 hours ago" [ref=e382]:
+                      - generic [ref=e383]: Apr 8, 202617 hours ago
+                  - row "package-lock.json, (File) Replace @upstash/redis SDK with direct REST API calls Apr 9, 202626 minutes ago" [ref=e384]:
+                    - cell "package-lock.json, (File)" [ref=e385]:
+                      - generic [ref=e386]:
+                        - img [ref=e387]
+                        - link "package-lock.json, (File)" [ref=e392] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/package-lock.json
+                          - text: package-lock.json
+                    - cell "Replace @upstash/redis SDK with direct REST API calls" [ref=e393]:
+                      - link "Replace @upstash/redis SDK with direct REST API calls" [ref=e396] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/af063a3e324579960cee3bea9854f4e67da11893
+                    - cell "Apr 9, 202626 minutes ago" [ref=e397]:
+                      - generic [ref=e398]: Apr 9, 202626 minutes ago
+                  - row "package.json, (File) Replace @upstash/redis SDK with direct REST API calls Apr 9, 202626 minutes ago" [ref=e399]:
+                    - cell "package.json, (File)" [ref=e400]:
+                      - generic [ref=e401]:
+                        - img [ref=e402]
+                        - link "package.json, (File)" [ref=e407] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/package.json
+                          - text: package.json
+                    - cell "Replace @upstash/redis SDK with direct REST API calls" [ref=e408]:
+                      - link "Replace @upstash/redis SDK with direct REST API calls" [ref=e411] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/af063a3e324579960cee3bea9854f4e67da11893
+                    - cell "Apr 9, 202626 minutes ago" [ref=e412]:
+                      - generic [ref=e413]: Apr 9, 202626 minutes ago
+                  - row "postcss.config.js, (File) Add Angular frontend with PWA and Tailwind CSS Apr 8, 202617 hours ago" [ref=e414]:
+                    - cell "postcss.config.js, (File)" [ref=e415]:
+                      - generic [ref=e416]:
+                        - img [ref=e417]
+                        - link "postcss.config.js, (File)" [ref=e422] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/postcss.config.js
+                          - text: postcss.config.js
+                    - cell "Add Angular frontend with PWA and Tailwind CSS" [ref=e423]:
+                      - link "Add Angular frontend with PWA and Tailwind CSS" [ref=e426] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/fd1e4f673c24cae9422d4621128d7dc52a214540
+                    - cell "Apr 8, 202617 hours ago" [ref=e427]:
+                      - generic [ref=e428]: Apr 8, 202617 hours ago
+                  - row "proxy.conf.json, (File) Fix ESM/CommonJS conflict in serverless functions Apr 8, 202613 hours ago" [ref=e429]:
+                    - cell "proxy.conf.json, (File)" [ref=e430]:
+                      - generic [ref=e431]:
+                        - img [ref=e432]
+                        - link "proxy.conf.json, (File)" [ref=e437] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/proxy.conf.json
+                          - text: proxy.conf.json
+                    - cell "Fix ESM/CommonJS conflict in serverless functions" [ref=e438]:
+                      - link "Fix ESM/CommonJS conflict in serverless functions" [ref=e441] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/5a0e6d2db450901feb2cafb5c5426934861bbb13
+                    - cell "Apr 8, 202613 hours ago" [ref=e442]:
+                      - generic [ref=e443]: Apr 8, 202613 hours ago
+                  - row "tsconfig.api.json, (File) Fix CJS compilation for Vercel serverless functions Apr 9, 20269 minutes ago" [ref=e444]:
+                    - cell "tsconfig.api.json, (File)" [ref=e445]:
+                      - generic [ref=e446]:
+                        - img [ref=e447]
+                        - link "tsconfig.api.json, (File)" [ref=e452] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/tsconfig.api.json
+                          - text: tsconfig.api.json
+                    - cell "Fix CJS compilation for Vercel serverless functions" [ref=e453]:
+                      - link "Fix CJS compilation for Vercel serverless functions" [ref=e456] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/dbd727a8dd3cd7c24ad4c08965e35f9444b132ed
+                    - cell "Apr 9, 20269 minutes ago" [ref=e457]:
+                      - generic [ref=e458]: Apr 9, 20269 minutes ago
+                  - row "tsconfig.app.json, (File) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e459]:
+                    - cell "tsconfig.app.json, (File)" [ref=e460]:
+                      - generic [ref=e461]:
+                        - img [ref=e462]
+                        - link "tsconfig.app.json, (File)" [ref=e467] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/tsconfig.app.json
+                          - text: tsconfig.app.json
+                    - cell "Initial Angular 21 project scaffold" [ref=e468]:
+                      - link "Initial Angular 21 project scaffold" [ref=e471] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e472]:
+                      - generic [ref=e473]: Apr 8, 202617 hours ago
+                  - row "tsconfig.json, (File) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e474]:
+                    - cell "tsconfig.json, (File)" [ref=e475]:
+                      - generic [ref=e476]:
+                        - img [ref=e477]
+                        - link "tsconfig.json, (File)" [ref=e482] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/tsconfig.json
+                          - text: tsconfig.json
+                    - cell "Initial Angular 21 project scaffold" [ref=e483]:
+                      - link "Initial Angular 21 project scaffold" [ref=e486] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e487]:
+                      - generic [ref=e488]: Apr 8, 202617 hours ago
+                  - row "tsconfig.spec.json, (File) Initial Angular 21 project scaffold Apr 8, 202617 hours ago" [ref=e489]:
+                    - cell "tsconfig.spec.json, (File)" [ref=e490]:
+                      - generic [ref=e491]:
+                        - img [ref=e492]
+                        - link "tsconfig.spec.json, (File)" [ref=e497] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/tsconfig.spec.json
+                          - text: tsconfig.spec.json
+                    - cell "Initial Angular 21 project scaffold" [ref=e498]:
+                      - link "Initial Angular 21 project scaffold" [ref=e501] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/3c76f4974b5ce80ec4831b32f39bb9dca0dc9a02
+                    - cell "Apr 8, 202617 hours ago" [ref=e502]:
+                      - generic [ref=e503]: Apr 8, 202617 hours ago
+                  - row "vercel.json, (File) Remove devCommand from vercel.json (incompatible with Windows) Apr 8, 202614 hours ago" [ref=e504]:
+                    - cell "vercel.json, (File)" [ref=e505]:
+                      - generic [ref=e506]:
+                        - img [ref=e507]
+                        - link "vercel.json, (File)" [ref=e512] [cursor=pointer]:
+                          - /url: /jacekbalcerski/gym/blob/master/vercel.json
+                          - text: vercel.json
+                    - cell "Remove devCommand from vercel.json (incompatible with Windows)" [ref=e513]:
+                      - link "Remove devCommand from vercel.json (incompatible with Windows)" [ref=e516] [cursor=pointer]:
+                        - /url: /jacekbalcerski/gym/commit/35af56cc3e049ca576f34807892fcd98a463fadb
+                    - cell "Apr 8, 202614 hours ago" [ref=e517]:
+                      - generic [ref=e518]: Apr 8, 202614 hours ago
+            - generic [ref=e520]:
+              - generic [ref=e521]:
+                - heading "Repository files navigation" [level=2] [ref=e522]
+                - navigation "Repository files" [ref=e523]:
+                  - list [ref=e524]:
+                    - listitem [ref=e525]:
+                      - link "README" [ref=e526] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e528]
+                        - generic [ref=e530]: README
+                - button "Outline" [ref=e531] [cursor=pointer]:
+                  - img [ref=e532]
+              - article [ref=e535]:
+                - generic [ref=e536]:
+                  - heading "GymMonitor" [level=1] [ref=e537]
+                  - 'link "Permalink: GymMonitor" [ref=e538] [cursor=pointer]':
+                    - /url: "#gymmonitor"
+                    - img [ref=e539]
+                - paragraph [ref=e541]:
+                  - text: This project was generated using
+                  - link "Angular CLI" [ref=e542] [cursor=pointer]:
+                    - /url: https://github.com/angular/angular-cli
+                  - text: version 21.2.6.
+                - generic [ref=e543]:
+                  - heading "Development server" [level=2] [ref=e544]
+                  - 'link "Permalink: Development server" [ref=e545] [cursor=pointer]':
+                    - /url: "#development-server"
+                    - img [ref=e546]
+                - paragraph [ref=e548]: "To start a local development server, run:"
+                - generic [ref=e549]:
+                  - generic [ref=e550]: ng serve
+                  - button "Copy" [ref=e552] [cursor=pointer]:
+                    - img [ref=e553]
+                - paragraph [ref=e556]:
+                  - text: Once the server is running, open your browser and navigate to
+                  - code [ref=e557]: http://localhost:4200/
+                  - text: . The application will automatically reload whenever you modify any of the source files.
+                - generic [ref=e558]:
+                  - heading "Code scaffolding" [level=2] [ref=e559]
+                  - 'link "Permalink: Code scaffolding" [ref=e560] [cursor=pointer]':
+                    - /url: "#code-scaffolding"
+                    - img [ref=e561]
+                - paragraph [ref=e563]: "Angular CLI includes powerful code scaffolding tools. To generate a new component, run:"
+                - generic [ref=e564]:
+                  - generic [ref=e565]: ng generate component component-name
+                  - button "Copy" [ref=e567] [cursor=pointer]:
+                    - img [ref=e568]
+                - paragraph [ref=e571]:
+                  - text: For a complete list of available schematics (such as
+                  - code [ref=e572]: components
+                  - text: ","
+                  - code [ref=e573]: directives
+                  - text: ", or"
+                  - code [ref=e574]: pipes
+                  - text: "), run:"
+                - generic [ref=e575]:
+                  - generic [ref=e576]: ng generate --help
+                  - button "Copy" [ref=e578] [cursor=pointer]:
+                    - img [ref=e579]
+                - generic [ref=e582]:
+                  - heading "Building" [level=2] [ref=e583]
+                  - 'link "Permalink: Building" [ref=e584] [cursor=pointer]':
+                    - /url: "#building"
+                    - img [ref=e585]
+                - paragraph [ref=e587]: "To build the project run:"
+                - generic [ref=e588]:
+                  - generic [ref=e589]: ng build
+                  - button "Copy" [ref=e591] [cursor=pointer]:
+                    - img [ref=e592]
+                - paragraph [ref=e595]:
+                  - text: This will compile your project and store the build artifacts in the
+                  - code [ref=e596]: dist/
+                  - text: directory. By default, the production build optimizes your application for performance and speed.
+                - generic [ref=e597]:
+                  - heading "Running unit tests" [level=2] [ref=e598]
+                  - 'link "Permalink: Running unit tests" [ref=e599] [cursor=pointer]':
+                    - /url: "#running-unit-tests"
+                    - img [ref=e600]
+                - paragraph [ref=e602]:
+                  - text: To execute unit tests with the
+                  - link "Vitest" [ref=e603] [cursor=pointer]:
+                    - /url: https://vitest.dev/
+                  - text: "test runner, use the following command:"
+                - generic [ref=e604]:
+                  - generic [ref=e605]: ng test
+                  - button "Copy" [ref=e607] [cursor=pointer]:
+                    - img [ref=e608]
+                - generic [ref=e611]:
+                  - heading "Running end-to-end tests" [level=2] [ref=e612]
+                  - 'link "Permalink: Running end-to-end tests" [ref=e613] [cursor=pointer]':
+                    - /url: "#running-end-to-end-tests"
+                    - img [ref=e614]
+                - paragraph [ref=e616]: "For end-to-end (e2e) testing, run:"
+                - generic [ref=e617]:
+                  - generic [ref=e618]: ng e2e
+                  - button "Copy" [ref=e620] [cursor=pointer]:
+                    - img [ref=e621]
+                - paragraph [ref=e624]: Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+                - generic [ref=e625]:
+                  - heading "Additional Resources" [level=2] [ref=e626]
+                  - 'link "Permalink: Additional Resources" [ref=e627] [cursor=pointer]':
+                    - /url: "#additional-resources"
+                    - img [ref=e628]
+                - paragraph [ref=e630]:
+                  - text: For more information on using the Angular CLI, including detailed command references, visit the
+                  - link "Angular CLI Overview and Command Reference" [ref=e631] [cursor=pointer]:
+                    - /url: https://angular.dev/tools/cli
+                  - text: page.
+        - generic [ref=e635]:
+          - generic [ref=e638]:
+            - heading "About" [level=2] [ref=e639]
+            - generic [ref=e640]:
+              - img [ref=e641]
+              - link "gym-eight-blush.vercel.app" [ref=e644] [cursor=pointer]:
+                - /url: https://gym-eight-blush.vercel.app
+            - heading "Resources" [level=3] [ref=e645]
+            - link "Readme" [ref=e647] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e648]
+              - text: Readme
+            - link "Activity" [ref=e651] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/activity
+              - img [ref=e652]
+              - text: Activity
+            - heading "Stars" [level=3] [ref=e654]
+            - link "0 stars" [ref=e656] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/stargazers
+              - img [ref=e657]
+              - strong [ref=e659]: "0"
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e660]
+            - link "0 watching" [ref=e662] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/watchers
+              - img [ref=e663]
+              - strong [ref=e665]: "0"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e666]
+            - link "0 forks" [ref=e668] [cursor=pointer]:
+              - /url: /jacekbalcerski/gym/forks
+              - img [ref=e669]
+              - strong [ref=e671]: "0"
+              - text: forks
+            - link "Report repository" [ref=e673] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fjacekbalcerski%2Fgym&report=jacekbalcerski+%28user%29
+          - generic [ref=e675]:
+            - heading "Releases" [level=2] [ref=e676]:
+              - link "Releases" [ref=e677] [cursor=pointer]:
+                - /url: /jacekbalcerski/gym/releases
+            - generic [ref=e678]: No releases published
+          - generic [ref=e680]:
+            - heading "Packages" [level=2] [ref=e681]:
+              - link "Packages" [ref=e682] [cursor=pointer]:
+                - /url: /users/jacekbalcerski/packages?repo_name=gym
+            - generic [ref=e683]: No packages published
+          - generic [ref=e685]:
+            - heading "Contributors 2" [level=2] [ref=e686]:
+              - link "Contributors 2" [ref=e687] [cursor=pointer]:
+                - /url: /jacekbalcerski/gym/graphs/contributors
+                - text: Contributors
+                - generic "2" [ref=e688]
+            - list [ref=e689]:
+              - listitem [ref=e690]:
+                - link "@claude" [ref=e691] [cursor=pointer]:
+                  - /url: https://github.com/claude
+                  - img "@claude" [ref=e692]
+                - link "claude Claude" [ref=e694] [cursor=pointer]:
+                  - /url: https://github.com/claude
+                  - strong [ref=e695]: claude
+                  - text: Claude
+              - listitem [ref=e696]:
+                - link "@jacekbalcerski" [ref=e697] [cursor=pointer]:
+                  - /url: https://github.com/jacekbalcerski
+                  - img "@jacekbalcerski" [ref=e698]
+                - link "jacekbalcerski" [ref=e700] [cursor=pointer]:
+                  - /url: https://github.com/jacekbalcerski
+                  - strong [ref=e701]: jacekbalcerski
+          - generic [ref=e703]:
+            - heading "Languages" [level=2] [ref=e704]
+            - list [ref=e710]:
+              - listitem [ref=e711]:
+                - link "TypeScript 57.2%" [ref=e712] [cursor=pointer]:
+                  - /url: /jacekbalcerski/gym/search?l=typescript
+                  - img [ref=e713]
+                  - generic [ref=e715]: TypeScript
+                  - generic [ref=e716]: 57.2%
+              - listitem [ref=e717]:
+                - link "HTML 42.7%" [ref=e718] [cursor=pointer]:
+                  - /url: /jacekbalcerski/gym/search?l=html
+                  - img [ref=e719]
+                  - generic [ref=e721]: HTML
+                  - generic [ref=e722]: 42.7%
+              - listitem [ref=e723]:
+                - generic [ref=e724]:
+                  - img [ref=e725]
+                  - generic [ref=e727]: Other
+                  - generic [ref=e728]: 0.1%
+  - contentinfo [ref=e730]:
+    - heading "Footer" [level=2] [ref=e731]
+    - generic [ref=e732]:
+      - generic [ref=e733]:
+        - link "GitHub Homepage" [ref=e734] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e735]
+        - generic [ref=e737]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e738]:
+        - heading "Footer navigation" [level=3] [ref=e739]
+        - list "Footer navigation" [ref=e740]:
+          - listitem [ref=e741]:
+            - link "Terms" [ref=e742] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e743]:
+            - link "Privacy" [ref=e744] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e745]:
+            - link "Security" [ref=e746] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e747]:
+            - link "Status" [ref=e748] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e749]:
+            - link "Community" [ref=e750] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e751]:
+            - link "Docs" [ref=e752] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e753]:
+            - link "Contact" [ref=e754] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e755]:
+            - button "Manage cookies" [ref=e757] [cursor=pointer]
+          - listitem [ref=e758]:
+            - button "Do not share my personal information" [ref=e760] [cursor=pointer]

@@ -30,16 +30,26 @@ jobs:
       - name: Send to Vercel scraper
         run: |
           HTTP_CODE="${{ steps.fetch.outputs.http_code }}"
+          echo "=== Playwright fetch result: HTTP_CODE=$HTTP_CODE ==="
+          echo "=== gym-text.txt exists: $([ -f /tmp/gym-text.txt ] && echo YES || echo NO) ==="
+          [ -f /tmp/gym-text.txt ] && echo "=== Text length: $(wc -c < /tmp/gym-text.txt) bytes ===" || true
+
           if [ "$HTTP_CODE" = "200" ] && [ -f /tmp/gym-text.txt ]; then
-            echo "Page rendered OK — posting text to scraper"
-            curl -s -f -X POST \
+            echo "=== Sending rendered text to Vercel ==="
+            HTTP_STATUS=$(curl -s -o /tmp/vercel-response.json -w "%{http_code}" -X POST \
               '${{ vars.VERCEL_APP_URL }}/api/cron/scrape' \
               -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}' \
               -H 'Content-Type: application/json' \
-              -d "{\"text\": $(jq -Rs '.' /tmp/gym-text.txt)}"
+              -d "{\"text\": $(jq -Rs '.' /tmp/gym-text.txt)}")
           else
-            echo "Fetch failed ($HTTP_CODE) — calling scraper without body (will log site unavailable)"
-            curl -s -f \
+            echo "=== Playwright blocked — triggering Vercel scraper directly (will use Jina Reader) ==="
+            HTTP_STATUS=$(curl -s -o /tmp/vercel-response.json -w "%{http_code}" \
               '${{ vars.VERCEL_APP_URL }}/api/cron/scrape' \
-              -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}'
+              -H 'Authorization: Bearer ${{ secrets.CRON_SECRET }}')
           fi
+
+          echo "=== Vercel response status: $HTTP_STATUS ==="
+          echo "=== Vercel response body: ==="
+          cat /tmp/vercel-response.json
+
+          [ "$HTTP_STATUS" = "200" ] || exit 1
